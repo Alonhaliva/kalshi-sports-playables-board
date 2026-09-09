@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kalshi — Playable Creative Board</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#EEF6F2;color:#3C3C3C;padding:40px 4%}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font-size:30px;font-weight:800}
+h1 .brand{color:#00C588}
+.sub{color:#777;font-size:15px;margin:6px 0 26px}
+.stats{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
+.stat{flex:1 1 200px;background:#fff;border:2px solid #E5E5E5;border-radius:16px;padding:18px 20px}
+.stat b{display:block;font-size:26px;color:#00C588;font-weight:800}
+.stat span{font-size:13px;color:#777;font-weight:600;line-height:1.4}
+h2{font-size:15px;font-weight:800;letter-spacing:1.5px;color:#AFAFAF;text-transform:uppercase;margin:36px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:18px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:2px solid #E5E5E5;border-bottom-width:5px;border-radius:18px;padding:20px;display:flex;gap:18px}
+@media(max-width:560px){.card{flex-direction:column;align-items:center}}
+.phonewrap{flex-shrink:0;text-align:center}
+.phone{width:206px;height:406px;border-radius:22px;border:3px solid #3C3C3C;overflow:hidden;position:relative;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.phone iframe{width:375px;height:740px;border:0;transform:scale(0.5413);transform-origin:0 0;display:block}
+.replay{margin-top:8px;background:none;border:1.5px solid #E5E5E5;border-radius:10px;color:#AFAFAF;font-size:11px;font-weight:800;letter-spacing:.6px;padding:5px 12px;cursor:pointer}
+.replay:hover{color:#00C588;border-color:#00C588}
+.meta{flex:1;min-width:0}
+.name{font-size:18px;font-weight:800}
+.fmt{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;color:#1899D6;background:#DDF4FF;border-radius:8px;padding:3px 8px;margin:6px 0 10px}
+.fmt.hot{color:#CC7800;background:#FFF3D6}
+.hook{font-size:13.5px;color:#555;line-height:1.55;margin-bottom:10px}
+.thesis{font-size:12.5px;color:#8a8a8a;line-height:1.55}
+.thesis b{color:#008F63}
+.file{font-size:10.5px;color:#AFAFAF;margin-top:10px;word-break:break-all;font-family:Menlo,monospace}
+.live{display:inline-block;font-size:10px;font-weight:800;color:#fff;background:#FF4B4B;border-radius:6px;padding:2px 7px;letter-spacing:1px;vertical-align:3px;margin-left:8px}
+table{width:100%;border-collapse:collapse;background:#fff;border:2px solid #E5E5E5;border-radius:16px;overflow:hidden;font-size:13.5px}
+th{background:#00C588;color:#fff;font-weight:800;text-align:left;padding:11px 14px;font-size:12px;letter-spacing:.8px;text-transform:uppercase}
+td{padding:11px 14px;border-top:1px solid #EFEFEF;color:#555;vertical-align:top}
+td:first-child{font-weight:700;color:#3C3C3C;white-space:nowrap}
+.note{background:#FFF8E1;border:2px solid #FFC800;border-radius:14px;padding:16px 18px;font-size:13px;color:#7A5800;line-height:1.6;margin-top:30px}
+footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1><span class="brand">Kalshi</span> × Unity Ads — NFL & MLB Playables</h1>
+<p class="sub">3 sports-tentpole playable concepts for Kalshi — <b>all live below, tap and play them right here.</b></p>
+<div class="stats"></div>
+<h2>Sports tentpoles — NFL & MLB</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf0" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script src=&quot;mraid.js&quot;&gt;&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Who Takes the Opener?&lt;/title&gt;
+&lt;style&gt;
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
+  html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
+    font-family:Inter,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif; color:#fff; -webkit-user-select:none; user-select:none; }
+  #stage{ position:absolute; top:0; left:0; right:0; bottom:0;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    background:radial-gradient(circle at 50% 16%, rgba(0,221,148,0.20), rgba(0,221,148,0) 58%),#01201A; touch-action:manipulation; }
+  #panel{ position:relative; width:100%; max-width:470px; margin:0 auto; padding:6% 7% 5%;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; text-align:center; }
+  #logo{ width:88px; height:auto; margin:0 0 10px; display:block; } #logo path{ fill:#00DD94; }
+  .tag{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#00DD94; font-weight:800; margin:0 0 6px; }
+  h1{ font-size:24px; line-height:1.2; font-weight:800; margin:0 0 4px; color:#fff; }
+  .sub{ font-size:12px; color:#86b8a6; margin:0 0 18px; }
+
+  .vs{ width:100%; display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:stretch; -webkit-align-items:stretch; align-items:stretch; gap:12px; position:relative; }
+  .team{ -webkit-box-flex:1; -webkit-flex:1; flex:1; cursor:pointer; border-radius:18px; overflow:hidden; position:relative;
+    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-bottom:4px solid rgba(255,255,255,0.12);
+    -webkit-transition:-webkit-transform .12s ease, border-color .15s, background .15s; transition:transform .12s ease, border-color .15s, background .15s; }
+  .team:active{ -webkit-transform:scale(.97); transform:scale(.97); }
+  .team .bar{ height:6px; }
+  .team .body{ padding:16px 10px 15px; }
+  .team .abbr{ font-size:30px; font-weight:800; letter-spacing:.02em; line-height:1; }
+  .team .name{ font-size:12px; font-weight:700; color:#bfeede; margin-top:5px; }
+  .team .wp{ margin-top:12px; font-size:22px; font-weight:800; color:#fff; }
+  .team .wp small{ display:block; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#6f9c8b; font-weight:800; margin-top:2px; }
+  .team.sel{ background:rgba(0,221,148,0.14); border-color:#00DD94; border-bottom-color:#00CE8E; }
+  .team.dim{ opacity:.42; }
+  .team.pulse{ -webkit-animation:tpulse 1.4s ease-in-out infinite; animation:tpulse 1.4s ease-in-out infinite; }
+  @-webkit-keyframes tpulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(0,221,148,0);} 50%{ box-shadow:0 0 0 5px rgba(0,221,148,0.16);} }
+  @keyframes tpulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(0,221,148,0);} 50%{ box-shadow:0 0 0 5px rgba(0,221,148,0.16);} }
+  .vsbadge{ position:absolute; top:50%; left:50%; -webkit-transform:translate(-50%,-50%); transform:translate(-50%,-50%); z-index:3;
+    width:34px; height:34px; border-radius:50%; background:#01201A; border:1px solid rgba(0,221,148,0.4); color:#00DD94; font-size:12px; font-weight:800;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center; }
+
+  #hint{ font-size:12.5px; font-weight:700; color:#4DE4B2; margin:16px 0 0; height:18px; -webkit-transition:opacity .2s; transition:opacity .2s; }
+
+  /* payout slip */
+  #slip{ width:100%; max-width:360px; margin:14px 0 0; overflow:hidden; max-height:0; opacity:0;
+    -webkit-transition:max-height .4s ease, opacity .4s ease, margin .4s ease; transition:max-height .4s ease, opacity .4s ease, margin .4s ease; }
+  #slip.show{ max-height:320px; opacity:1; }
+  .slipcard{ background:rgba(255,255,255,0.05); border:1px solid rgba(0,221,148,0.24); border-radius:16px; padding:15px 16px; }
+  .slipcard .row{ display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:justify; -webkit-justify-content:space-between; justify-content:space-between; }
+  .slipcard .lab{ font-size:12px; color:#9fcab9; text-align:left; } .slipcard .lab b{ color:#fff; }
+  .slipcard .big{ font-size:30px; font-weight:800; color:#00DD94; text-shadow:0 0 24px rgba(0,221,148,0.3); }
+  .slipcard .note{ font-size:11.5px; color:#7fd9bd; margin-top:8px; text-align:left; line-height:1.4; }
+  .slipcard .note b{ color:#eafff7; }
+
+  #cta{ display:block; width:100%; max-width:360px; margin:14px auto 0; padding:15px 30px; border:0; border-radius:999px; font-family:inherit;
+    font-weight:800; font-size:18px; color:#01201A; background:#00DD94; box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer;
+    opacity:0; max-height:0; overflow:hidden; -webkit-transition:opacity .35s ease; transition:opacity .35s ease; -webkit-transform:translateZ(0); }
+  #cta.show{ opacity:1; max-height:70px; }
+  #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
+
+  .disc{ font-size:8px; line-height:1.4; color:#4b6b60; margin:16px 4px 2px; text-align:center; max-width:400px; }
+
+  @media (orientation:landscape){
+    #panel{ max-width:640px; padding:2.5% 6%; } #logo{ width:66px; margin-bottom:6px; } h1{ font-size:20px; } .sub{ margin-bottom:12px; }
+    .vs{ max-width:520px; } .team .abbr{ font-size:26px; } #hint{ margin-top:10px; } .disc{ display:none; }
+  }
+  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; -webkit-animation:none!important; animation:none!important; } }
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
+  &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
+  &lt;div class=&quot;tag&quot;&gt;NFL Kickoff&lt;/div&gt;
+  &lt;h1&gt;Who takes the opener?&lt;/h1&gt;
+  &lt;div class=&quot;sub&quot;&gt;Seattle @ Kansas City &amp;middot; Tap your team to trade&lt;/div&gt;
+  &lt;div class=&quot;vs&quot; id=&quot;vs&quot;&gt;
+    &lt;div class=&quot;team&quot; id=&quot;tA&quot; data-side=&quot;Seattle&quot; data-pct=&quot;43&quot;&gt;
+      &lt;div class=&quot;bar&quot; style=&quot;background:#69BE28&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;body&quot;&gt;&lt;div class=&quot;abbr&quot; style=&quot;color:#69BE28&quot;&gt;SEA&lt;/div&gt;&lt;div class=&quot;name&quot;&gt;Seahawks&lt;/div&gt;&lt;div class=&quot;wp&quot;&gt;43%&lt;small&gt;Win&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;vsbadge&quot;&gt;VS&lt;/div&gt;
+    &lt;div class=&quot;team&quot; id=&quot;tB&quot; data-side=&quot;Kansas City&quot; data-pct=&quot;57&quot;&gt;
+      &lt;div class=&quot;bar&quot; style=&quot;background:#E31837&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;body&quot;&gt;&lt;div class=&quot;abbr&quot; style=&quot;color:#ff5a76&quot;&gt;KC&lt;/div&gt;&lt;div class=&quot;name&quot;&gt;Chiefs&lt;/div&gt;&lt;div class=&quot;wp&quot;&gt;57%&lt;small&gt;Win&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;hint&quot;&gt;&amp;#128070; Pick your team to trade&lt;/div&gt;
+
+  &lt;div id=&quot;slip&quot;&gt;&lt;div class=&quot;slipcard&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;lab&quot;&gt;If &lt;b id=&quot;slipTeam&quot;&gt;Seattle&lt;/b&gt; wins, &lt;b&gt;$25&lt;/b&gt; pays&lt;/div&gt;&lt;div class=&quot;big&quot;&gt;$&lt;span id=&quot;slipPay&quot;&gt;58.14&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;note&quot;&gt;Pays the &lt;b&gt;moment the game ends&lt;/b&gt; &amp;mdash; cash out anytime. That&amp;rsquo;s a real market, not a sportsbook.&lt;/div&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;button id=&quot;cta&quot;&gt;Trade on Kalshi&lt;/button&gt;
+  &lt;div class=&quot;disc&quot;&gt;Restrictions and eligibility requirements apply. Event contract trading involves significant risk and is not appropriate for everyone. Please carefully consider if it&amp;rsquo;s appropriate for you in light of your personal financial circumstances. Prices shown are not be live and are subject to change. Certain products unavailable in some jurisdictions. Federally regulated event contract exchange, see kalshi.com/regulatory for more info. User must be 18+ to register and trade. Ad may contain AI-generated imagery.&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;script&gt;
+/* ============================================================
+ * Kalshi — NFL &quot;Who Takes the Opener?&quot; head-to-head playable.
+ * Tap a team -&gt; instant payout slip (resolves when the game ends)
+ * -&gt; Trade CTA. Grounded in the client&#x27;s NFL matchup + payout-slip
+ * concepts; fast-payout / not-a-sportsbook wedge from the videos.
+ * Interactive (never auto-plays); attract = pulsing cards + hand.
+ * MRAID 3.0, ES5. Verb: &quot;trade&quot;, never &quot;bet&quot;.
+ * ============================================================ */
+(function(){
+  &quot;use strict&quot;;
+  var STORE={ ios:&quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
+    android:&quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot; };
+  function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
+  var STAKE=25;
+  var tA=document.getElementById(&quot;tA&quot;), tB=document.getElementById(&quot;tB&quot;), hint=document.getElementById(&quot;hint&quot;),
+      slip=document.getElementById(&quot;slip&quot;), cta=document.getElementById(&quot;cta&quot;);
+  var started=false, picked=false;
+
+  function pick(el, other){
+    if(!started) return;
+    el.className=&quot;team sel&quot;; other.className=&quot;team dim&quot;;      /* re-selectable: tap either team any time */
+    var side=el.getAttribute(&quot;data-side&quot;), pct=parseInt(el.getAttribute(&quot;data-pct&quot;),10);
+    document.getElementById(&quot;slipTeam&quot;).innerHTML=side;
+    document.getElementById(&quot;slipPay&quot;).innerHTML=(STAKE/(pct/100)).toFixed(2);
+    picked=true;
+    hint.innerHTML=&quot;Tap the other team to compare&quot;;
+    slip.className=&quot;show&quot;; cta.className=&quot;show&quot;;
+  }
+  tA.onclick=function(){ pick(tA,tB); };
+  tB.onclick=function(){ pick(tB,tA); };
+  cta.addEventListener(&quot;click&quot;,function(){ var url=STORE[platform()];
+    if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
+
+  function startAttract(){ if(picked) return; tA.className=&quot;team pulse&quot;; tB.className=&quot;team pulse&quot;; hint.style.opacity=&quot;1&quot;; }
+  function stopAttract(){ if(!picked){ tA.className=&quot;team&quot;; tB.className=&quot;team&quot;; } }
+  function showAd(){ if(started) return; started=true; startAttract(); }
+  function onViewableChange(v){ if(v){ started?startAttract():showAd(); } else stopAttract(); }
+  function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
+  function boot(){ if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
+    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else onSdkReady(); }
+  document.addEventListener(&quot;visibilitychange&quot;,function(){ if(document.hidden) stopAttract(); else if(started&amp;&amp;!picked) startAttract(); },false);
+  boot();
+})();
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf0');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Who Takes the Opener?<span class="live">LIVE</span></div><div class="fmt hot">NFL · HEAD-TO-HEAD · 1 TAP</div><div class="hook">SEA vs. KC season opener — tap your team (switch freely to compare) → an instant payout slip ($25 → $58.14) that “pays the moment the game ends.” Matchup + payout-slip concepts, with the fast-payout / not-a-sportsbook wedge from the DK video.</div><div class="thesis"><b>Tests:</b> sports pick’em + instant-payout hook — does letting fans make the call before install lift qualified, deposit-ready users during the NFL tentpole?</div><div class="file">Kalshi_NFL_Matchup_2T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf1" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script src=&quot;mraid.js&quot;&gt;&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Call the World Series&lt;/title&gt;
+&lt;style&gt;
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
+  html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
+    font-family:Inter,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif; color:#fff; -webkit-user-select:none; user-select:none; }
+  #stage{ position:absolute; top:0; left:0; right:0; bottom:0;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    background:radial-gradient(circle at 50% 14%, rgba(0,221,148,0.20), rgba(0,221,148,0) 56%),#01201A; touch-action:manipulation; }
+  #panel{ position:relative; width:100%; max-width:460px; margin:0 auto; padding:6% 7% 5%;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; text-align:center; }
+  #logo{ width:88px; height:auto; margin:0 0 10px; display:block; } #logo path{ fill:#00DD94; }
+  .tag{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#00DD94; font-weight:800; margin:0 0 6px; }
+  h1{ font-size:24px; line-height:1.2; font-weight:800; margin:0 0 4px; color:#fff; }
+  .sub{ font-size:12px; color:#86b8a6; margin:0 0 16px; }
+
+  .rows{ width:100%; max-width:380px; display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; gap:9px; }
+  .row{ width:100%; cursor:pointer; text-align:left; border-radius:14px; padding:13px 15px;
+    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-left:4px solid rgba(0,221,148,0.5);
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:justify; -webkit-justify-content:space-between; justify-content:space-between; gap:12px;
+    -webkit-transition:-webkit-transform .1s ease, background .15s, border-color .15s; transition:transform .1s ease, background .15s, border-color .15s; }
+  .row:active{ -webkit-transform:scale(.98); transform:scale(.98); }
+  .row .tm{ font-size:16px; font-weight:800; color:#eafff7; }
+  .row .od{ font-size:18px; font-weight:800; color:#00DD94; -webkit-flex-shrink:0; flex-shrink:0; }
+  .row .od small{ display:block; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:#6f9c8b; font-weight:800; text-align:right; }
+  .row.sel{ background:rgba(0,221,148,0.14); border-color:#00DD94; border-left-color:#00DD94; }
+  .row.dim{ opacity:.4; }
+  .row.pulse{ -webkit-animation:rpulse 1.5s ease-in-out infinite; animation:rpulse 1.5s ease-in-out infinite; }
+  @-webkit-keyframes rpulse{ 0%,100%{ background:rgba(255,255,255,0.05);} 50%{ background:rgba(0,221,148,0.10);} }
+  @keyframes rpulse{ 0%,100%{ background:rgba(255,255,255,0.05);} 50%{ background:rgba(0,221,148,0.10);} }
+
+  #hint{ font-size:12.5px; font-weight:700; color:#4DE4B2; margin:14px 0 0; height:18px; -webkit-transition:opacity .2s; transition:opacity .2s; }
+
+  #slip{ width:100%; max-width:380px; margin:12px 0 0; overflow:hidden; max-height:0; opacity:0;
+    -webkit-transition:max-height .4s ease, opacity .4s ease; transition:max-height .4s ease, opacity .4s ease; }
+  #slip.show{ max-height:300px; opacity:1; }
+  .slipcard{ background:rgba(255,255,255,0.05); border:1px solid rgba(0,221,148,0.24); border-radius:16px; padding:14px 16px; }
+  .slipcard .row2{ display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:justify; -webkit-justify-content:space-between; justify-content:space-between; }
+  .slipcard .lab{ font-size:12px; color:#9fcab9; text-align:left; } .slipcard .lab b{ color:#fff; }
+  .slipcard .big{ font-size:28px; font-weight:800; color:#00DD94; text-shadow:0 0 24px rgba(0,221,148,0.3); }
+  .slipcard .note{ font-size:11.5px; color:#7fd9bd; margin-top:8px; text-align:left; line-height:1.4; } .slipcard .note b{ color:#eafff7; }
+
+  #cta{ display:block; width:100%; max-width:380px; margin:12px auto 0; padding:15px 30px; border:0; border-radius:999px; font-family:inherit;
+    font-weight:800; font-size:18px; color:#01201A; background:#00DD94; box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer;
+    opacity:0; max-height:0; overflow:hidden; -webkit-transition:opacity .35s ease; transition:opacity .35s ease; }
+  #cta.show{ opacity:1; max-height:70px; }
+  #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
+  .disc{ font-size:8px; line-height:1.4; color:#4b6b60; margin:14px 4px 2px; text-align:center; max-width:400px; }
+
+  @media (orientation:landscape){
+    #panel{ max-width:640px; padding:2.5% 6%; } #logo{ width:64px; margin-bottom:6px; } h1{ font-size:20px; } .sub{ margin-bottom:10px; }
+    .rows{ max-width:520px; } #hint{ margin-top:8px; } .disc{ display:none; }
+  }
+  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; -webkit-animation:none!important; animation:none!important; } }
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
+  &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
+  &lt;div class=&quot;tag&quot;&gt;MLB &amp;middot; World Series&lt;/div&gt;
+  &lt;h1&gt;Who wins it all?&lt;/h1&gt;
+  &lt;div class=&quot;sub&quot;&gt;Tap a contender to make your call&lt;/div&gt;
+  &lt;div class=&quot;rows&quot; id=&quot;rows&quot;&gt;
+    &lt;button class=&quot;row&quot; data-tm=&quot;Dodgers&quot;  data-pct=&quot;24&quot;&gt;&lt;span class=&quot;tm&quot;&gt;Dodgers&lt;/span&gt;&lt;span class=&quot;od&quot;&gt;24%&lt;small&gt;To win&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;row&quot; data-tm=&quot;Yankees&quot;  data-pct=&quot;19&quot;&gt;&lt;span class=&quot;tm&quot;&gt;Yankees&lt;/span&gt;&lt;span class=&quot;od&quot;&gt;19%&lt;small&gt;To win&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;row&quot; data-tm=&quot;Phillies&quot; data-pct=&quot;14&quot;&gt;&lt;span class=&quot;tm&quot;&gt;Phillies&lt;/span&gt;&lt;span class=&quot;od&quot;&gt;14%&lt;small&gt;To win&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;row&quot; data-tm=&quot;Mariners&quot; data-pct=&quot;11&quot;&gt;&lt;span class=&quot;tm&quot;&gt;Mariners&lt;/span&gt;&lt;span class=&quot;od&quot;&gt;11%&lt;small&gt;To win&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;row&quot; data-tm=&quot;the field&quot; data-pct=&quot;32&quot;&gt;&lt;span class=&quot;tm&quot;&gt;The field&lt;/span&gt;&lt;span class=&quot;od&quot;&gt;32%&lt;small&gt;To win&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;hint&quot;&gt;&amp;#128070; Tap a team to see your payout&lt;/div&gt;
+
+  &lt;div id=&quot;slip&quot;&gt;&lt;div class=&quot;slipcard&quot;&gt;
+    &lt;div class=&quot;row2&quot;&gt;&lt;div class=&quot;lab&quot;&gt;If the &lt;b id=&quot;slipTeam&quot;&gt;Dodgers&lt;/b&gt; win it all, &lt;b&gt;$25&lt;/b&gt; pays&lt;/div&gt;&lt;div class=&quot;big&quot;&gt;$&lt;span id=&quot;slipPay&quot;&gt;104.17&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;note&quot;&gt;Pays the &lt;b&gt;moment the Series is decided&lt;/b&gt; &amp;mdash; cash out anytime along the way. A real market, not a sportsbook.&lt;/div&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;button id=&quot;cta&quot;&gt;Trade on Kalshi&lt;/button&gt;
+  &lt;div class=&quot;disc&quot;&gt;Restrictions and eligibility requirements apply. Event contract trading involves significant risk and is not appropriate for everyone. Please carefully consider if it&amp;rsquo;s appropriate for you in light of your personal financial circumstances. Prices shown are not be live and are subject to change. Certain products unavailable in some jurisdictions. Federally regulated event contract exchange, see kalshi.com/regulatory for more info. User must be 18+ to register and trade. Ad may contain AI-generated imagery.&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;script&gt;
+/* ============================================================
+ * Kalshi — MLB &quot;Call the World Series&quot; playable.
+ * Tap a contender -&gt; payout slip (resolves when the Series ends)
+ * -&gt; Trade CTA. MLB tentpole (not in the client doc — fresh build).
+ * Interactive (never auto-plays); attract = pulsing rows + hand.
+ * MRAID 3.0, ES5. Verb: &quot;trade&quot; / &quot;make your call&quot;, never &quot;bet&quot;.
+ * ============================================================ */
+(function(){
+  &quot;use strict&quot;;
+  var STORE={ ios:&quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
+    android:&quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot; };
+  function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
+  var STAKE=25;
+  var rowsEl=document.getElementById(&quot;rows&quot;), rows=rowsEl.querySelectorAll(&quot;.row&quot;),
+      hint=document.getElementById(&quot;hint&quot;), slip=document.getElementById(&quot;slip&quot;), cta=document.getElementById(&quot;cta&quot;);
+  var started=false, picked=false;
+
+  function pick(btn){
+    if(!started) return;                                      /* re-selectable: tap any contender any time */
+    for(var i=0;i&lt;rows.length;i++){ rows[i].className=rows[i].className.replace(/\s*(sel|dim|pulse)/g,&quot;&quot;); rows[i].className+=(rows[i]===btn?&quot; sel&quot;:&quot; dim&quot;); }
+    var tm=btn.getAttribute(&quot;data-tm&quot;), pct=parseInt(btn.getAttribute(&quot;data-pct&quot;),10);
+    document.getElementById(&quot;slipTeam&quot;).innerHTML=tm;
+    document.getElementById(&quot;slipPay&quot;).innerHTML=(STAKE/(pct/100)).toFixed(2);
+    picked=true; hint.innerHTML=&quot;Tap another team to compare&quot;; slip.className=&quot;show&quot;; cta.className=&quot;show&quot;;
+  }
+  for(var i=0;i&lt;rows.length;i++){ (function(b){ b.onclick=function(){ pick(b); }; })(rows[i]); }
+  cta.addEventListener(&quot;click&quot;,function(){ var url=STORE[platform()];
+    if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
+
+  function startAttract(){ if(picked) return; for(var i=0;i&lt;rows.length;i++){ rows[i].className=&quot;row pulse&quot;; } hint.style.opacity=&quot;1&quot;; }
+  function stopAttract(){ if(!picked){ for(var i=0;i&lt;rows.length;i++){ rows[i].className=&quot;row&quot;; } } }
+  function showAd(){ if(started) return; started=true; startAttract(); }
+  function onViewableChange(v){ if(v){ started?startAttract():showAd(); } else stopAttract(); }
+  function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
+  function boot(){ if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
+    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else onSdkReady(); }
+  document.addEventListener(&quot;visibilitychange&quot;,function(){ if(document.hidden) stopAttract(); else if(started&amp;&amp;!picked) startAttract(); },false);
+  boot();
+})();
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf1');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Call the World Series<span class="live">LIVE</span></div><div class="fmt hot">MLB · PICK A CONTENDER · 1 TAP</div><div class="hook">Tap any contender on the live-odds board (switch to compare payouts) → a payout slip that “pays the moment the Series is decided.” Fresh MLB tentpole build.</div><div class="thesis"><b>Tests:</b> futures-market pick — does a season-long ‘who wins it all’ call convert during the MLB playoff window?</div><div class="file">Kalshi_MLB_WorldSeries_1T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf2" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script src=&quot;mraid.js&quot;&gt;&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Agree With the Market?&lt;/title&gt;
+&lt;style&gt;
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
+  html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
+    font-family:Inter,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif; color:#fff; -webkit-user-select:none; user-select:none; }
+  #stage{ position:absolute; top:0; left:0; right:0; bottom:0;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    background:radial-gradient(circle at 50% 18%, rgba(0,221,148,0.20), rgba(0,221,148,0) 60%),#01201A; touch-action:none; }
+  #panel{ position:relative; width:100%; max-width:450px; margin:0 auto; padding:5% 7% 3%;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; text-align:center; }
+  #logo{ width:90px; height:auto; margin:0 0 10px; display:block; } #logo path{ fill:#00DD94; }
+  .tag{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#00DD94; font-weight:800; margin:0 0 8px; }
+  h1{ font-size:22px; line-height:1.22; font-weight:800; margin:0 0 3px; color:#fff; }
+  .sub{ font-size:12px; color:#86b8a6; margin:0 0 14px; } .sub b{ color:#eafff7; }
+  #pct{ font-size:56px; line-height:1; font-weight:800; color:#00DD94; margin:2px 0 0; letter-spacing:-.02em; text-shadow:0 0 30px rgba(0,221,148,0.35); }
+  #pct small{ font-size:22px; font-weight:700; vertical-align:top; margin-left:2px; }
+  .yn{ font-size:13px; font-weight:700; color:#9fcab9; margin:6px 0 18px; } .yn b{ color:#fff; }
+  #slider{ position:relative; width:100%; height:56px; margin:2px 0 4px; cursor:grab; }
+  #track{ position:absolute; top:50%; left:0; right:0; height:14px; -webkit-transform:translateY(-50%); transform:translateY(-50%);
+    background:rgba(255,255,255,0.10); border-radius:999px; overflow:visible; }
+  #fillbox{ position:absolute; top:0; left:0; right:0; bottom:0; border-radius:999px; overflow:hidden; }
+  #fill{ position:absolute; top:0; left:0; bottom:0; width:43%; background:linear-gradient(90deg,#00CE8E,#00DD94); }
+  #mark{ position:absolute; top:-8px; bottom:-8px; left:43%; width:2px; background:rgba(255,255,255,0.55); }
+  #mark:after{ content:&quot;MKT 43%&quot;; position:absolute; top:-16px; left:50%; -webkit-transform:translateX(-50%); transform:translateX(-50%);
+    font-size:9px; font-weight:800; letter-spacing:.06em; color:#cfeee2; white-space:nowrap; }
+  #thumb{ position:absolute; top:50%; left:43%; width:40px; height:40px; margin-left:-20px; -webkit-transform:translateY(-50%); transform:translateY(-50%);
+    background:#fff; border-radius:50%; box-shadow:0 6px 18px rgba(0,0,0,0.45),0 0 0 6px rgba(0,221,148,0.18);
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center; }
+  #thumb:after{ content:&quot;&quot;; width:13px; height:13px; border-radius:50%; background:#00DD94; }
+  .scale{ display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-pack:justify; -webkit-justify-content:space-between; justify-content:space-between; width:100%; font-size:11px; color:#6f9c8b; margin-top:6px; }
+  #payout{ width:100%; margin:14px 0 2px; background:rgba(255,255,255,0.05); border:1px solid rgba(0,221,148,0.22); border-radius:14px; padding:11px 14px;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:justify; -webkit-justify-content:space-between; justify-content:space-between; }
+  #payout .lab{ font-size:12px; color:#9fcab9; text-align:left; } #payout .val{ font-size:20px; font-weight:800; color:#fff; }
+  #hint{ font-size:12px; color:#4DE4B2; margin:12px 0 0; height:16px; -webkit-transition:opacity .3s; transition:opacity .3s; }
+  .nudge{ -webkit-animation:nudge 1.4s ease-in-out infinite; animation:nudge 1.4s ease-in-out infinite; }
+  @-webkit-keyframes nudge{ 0%,100%{ -webkit-transform:translateX(-6px);} 50%{ -webkit-transform:translateX(6px);} }
+  @keyframes nudge{ 0%,100%{ transform:translateX(-6px);} 50%{ transform:translateX(6px);} }
+  #cta{ margin:14px auto 0; padding:15px 30px; border:0; border-radius:999px; font-family:inherit; font-weight:800; font-size:17px;
+    color:#01201A; background:#00DD94; box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer;
+    opacity:0; -webkit-transform:translateY(8px); transform:translateY(8px);
+    -webkit-transition:opacity .35s ease,-webkit-transform .35s ease; transition:opacity .35s ease,transform .35s ease; pointer-events:none; }
+  #cta.show{ opacity:1; -webkit-transform:translateY(0); transform:translateY(0); pointer-events:auto; }
+  #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
+  .disc{ font-size:8px; line-height:1.4; color:#4b6b60; margin:14px 4px 2px; text-align:center; max-width:400px; }
+  @media (orientation:landscape){ #panel{ max-width:600px; padding:2% 6%; } #logo{ width:70px; margin-bottom:6px; }
+    #pct{ font-size:42px; } h1{ font-size:18px; } .tag{ margin-bottom:6px; } .sub{ margin-bottom:8px; }
+    #payout{ margin-top:8px; } #cta{ margin-top:10px; padding:12px 26px; } .disc{ display:none; } }
+  @media (orientation:landscape) and (max-height:380px){ #pct{ font-size:34px; } #slider{ height:48px; } .sub{ display:none; } }
+  @media (prefers-reduced-motion:reduce){ .nudge{ -webkit-animation:none; animation:none; } }
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
+  &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
+  &lt;div class=&quot;tag&quot;&gt;NFL &amp;middot; Agree with the market?&lt;/div&gt;
+  &lt;h1&gt;Seahawks to win the opener?&lt;/h1&gt;
+  &lt;div class=&quot;sub&quot;&gt;The market says &lt;b&gt;43%&lt;/b&gt;. Drag to set &lt;b&gt;your&lt;/b&gt; number.&lt;/div&gt;
+  &lt;div id=&quot;pct&quot;&gt;43&lt;small&gt;%&lt;/small&gt;&lt;/div&gt;
+  &lt;div class=&quot;yn&quot;&gt;YES &lt;b id=&quot;yesc&quot;&gt;43&amp;cent;&lt;/b&gt; &amp;nbsp;&amp;middot;&amp;nbsp; NO &lt;b id=&quot;noc&quot;&gt;57&amp;cent;&lt;/b&gt;&lt;/div&gt;
+  &lt;div id=&quot;slider&quot;&gt;&lt;div id=&quot;track&quot;&gt;&lt;div id=&quot;fillbox&quot;&gt;&lt;div id=&quot;fill&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=&quot;mark&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=&quot;thumb&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;scale&quot;&gt;&lt;span&gt;0% &amp;middot; No&lt;/span&gt;&lt;span&gt;Seahawks win?&lt;/span&gt;&lt;span&gt;100% &amp;middot; Yes&lt;/span&gt;&lt;/div&gt;
+  &lt;div id=&quot;payout&quot;&gt;&lt;div class=&quot;lab&quot;&gt;If you&amp;rsquo;re right, $25 becomes&lt;/div&gt;&lt;div class=&quot;val&quot;&gt;$&lt;span id=&quot;pay&quot;&gt;58.14&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div id=&quot;hint&quot;&gt;&amp;nbsp;&lt;/div&gt;
+  &lt;button id=&quot;cta&quot;&gt;Trade on Kalshi&lt;/button&gt;
+  &lt;div class=&quot;disc&quot;&gt;Restrictions and eligibility requirements apply. Event contract trading involves significant risk and is not appropriate for everyone. Please carefully consider if it&amp;rsquo;s appropriate for you in light of your personal financial circumstances. Prices shown are not be live and are subject to change. Certain products unavailable in some jurisdictions. Federally regulated event contract exchange, see kalshi.com/regulatory for more info. User must be 18+ to register and trade. Ad may contain AI-generated imagery.&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;script&gt;
+/* ============================================================
+ * Kalshi — NFL &quot;Agree with the Market?&quot; slider playable.
+ * Market marker fixed at 43%; drag YOUR number, YES/NO cents +
+ * $25 payout update live -&gt; Trade CTA. From the client&#x27;s
+ * &quot;Seattle at 8% — agree?&quot; concept. Interactive; never auto-plays.
+ * MRAID 3.0, ES5. Verb: &quot;trade&quot;, never &quot;bet&quot;.
+ * ============================================================ */
+(function(){
+  &quot;use strict&quot;;
+  var STORE={ ios:&quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
+    android:&quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot; };
+  function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
+  var STAKE=25, MARKET=43;
+  var slider=document.getElementById(&quot;slider&quot;), fill=document.getElementById(&quot;fill&quot;), thumb=document.getElementById(&quot;thumb&quot;),
+      pctEl=document.getElementById(&quot;pct&quot;), yesEl=document.getElementById(&quot;yesc&quot;), noEl=document.getElementById(&quot;noc&quot;),
+      payEl=document.getElementById(&quot;pay&quot;), hint=document.getElementById(&quot;hint&quot;), cta=document.getElementById(&quot;cta&quot;);
+  var started=false, dragging=false, interacted=false, pct=MARKET;
+  function clamp(v,lo,hi){ return v&lt;lo?lo:(v&gt;hi?hi:v); }
+  function render(p){
+    pct=Math.round(clamp(p,1,99)); fill.style.width=pct+&quot;%&quot;; thumb.style.left=pct+&quot;%&quot;;
+    pctEl.innerHTML=pct+&quot;&lt;small&gt;%&lt;/small&gt;&quot;; yesEl.innerHTML=pct+&quot;&amp;cent;&quot;; noEl.innerHTML=(100-pct)+&quot;&amp;cent;&quot;;
+    payEl.innerHTML=(STAKE/(pct/100)).toFixed(2);
+  }
+  function pctFromX(x){ var r=slider.getBoundingClientRect(); return clamp(((x-r.left)/r.width)*100,1,99); }
+  function onMove(x){ if(!dragging||!started) return; render(pctFromX(x));
+    if(!interacted){ interacted=true; cta.className=&quot;show&quot;; hint.className=&quot;&quot;; hint.innerHTML=&quot;Back your call &amp;mdash; trade it live on Kalshi.&quot;; } }
+  function startDrag(x){ if(!started) return; dragging=true; slider.style.cursor=&quot;grabbing&quot;; onMove(x); }
+  function endDrag(){ dragging=false; slider.style.cursor=&quot;grab&quot;; }
+  slider.addEventListener(&quot;touchstart&quot;,function(e){ startDrag(e.touches[0].clientX); e.preventDefault(); },false);
+  slider.addEventListener(&quot;touchmove&quot;,function(e){ onMove(e.touches[0].clientX); e.preventDefault(); },false);
+  slider.addEventListener(&quot;touchend&quot;,function(){ endDrag(); },false);
+  slider.addEventListener(&quot;touchcancel&quot;,function(){ endDrag(); },false);
+  slider.addEventListener(&quot;mousedown&quot;,function(e){ startDrag(e.clientX); e.preventDefault(); },false);
+  document.addEventListener(&quot;mousemove&quot;,function(e){ onMove(e.clientX); },false);
+  document.addEventListener(&quot;mouseup&quot;,function(){ endDrag(); },false);
+  cta.addEventListener(&quot;click&quot;,function(){ if(!interacted) return; var url=STORE[platform()];
+    if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
+  function startHint(){ hint.className=&quot;nudge&quot;; hint.innerHTML=&quot;&amp;#9664;&amp;nbsp; Drag your number &amp;nbsp;&amp;#9654;&quot;; }
+  function stopHint(){ hint.className=&quot;&quot;; }
+  function showAd(){ if(started) return; started=true; render(MARKET); if(!interacted) startHint(); }
+  function resumeAd(){ if(!interacted) startHint(); } function pauseAd(){ stopHint(); }
+  function onViewableChange(v){ if(v){ started?resumeAd():showAd(); } else pauseAd(); }
+  function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
+  function boot(){ if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
+    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else onSdkReady(); }
+  document.addEventListener(&quot;visibilitychange&quot;,function(){ if(document.hidden) pauseAd(); else if(started) resumeAd(); },false);
+  window.addEventListener(&quot;resize&quot;,function(){ render(pct); },false);
+  render(MARKET); boot();
+})();
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf2');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Agree With the Market?<span class="live">LIVE</span></div><div class="fmt">NFL · DRAG SLIDER</div><div class="hook">“Seahawks to win the opener — the market says 43%. What’s your number?” Drag against the market marker → YES/NO cents + $25 payout update live. From the ‘Seattle at 8% — agree?’ concept.</div><div class="thesis"><b>Tests:</b> conviction hook — does challenging the user against the market’s number drive engagement vs. a straight pick?</div><div class="file">Kalshi_NFL_AgreeSlider_Drag.html</div></div></div></div>
+<h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A — Sport</td><td>NFL Matchup vs. MLB World Series</td><td>Which league’s pick’em converts harder during its tentpole window?</td><td>IPM → FTD rate</td></tr><tr><td>B — Mechanic</td><td>NFL Matchup vs. Agree Slider</td><td>Straight pick vs. ‘beat the market’ conviction — which hook wins?</td><td>CTR → CVR</td></tr></table>
+<div class="note"><b>About these builds:</b> working concept builds — final versions ship with the real Week-1 matchup, current odds, and any official team assets. All three are genuinely interactive (tap/drag, re-selectable), Unity-spec compliant (MRAID 3.0 · single file · &lt;5&nbsp;MB · both orientations), carry Kalshi’s official disclaimer verbatim, and hold the compliance line — the verb is always “trade,” never “bet.” Ready for campaign QA once concepts are approved.</div>
+<footer>Kalshi brand tokens: kalshi.com/brandkit. Store: apps.apple.com/us/app/kalshi/id1632713844 · play.google.com/store/apps/details?id=com.kalshi.mobile</footer>
+</div>
+</body>
+</html>
