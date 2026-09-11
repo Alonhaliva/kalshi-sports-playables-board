@@ -164,7 +164,123 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf0');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Who's Your Champion?<span class="live">LIVE</span></div><div class="fmt hot">FOOTBALL · FUTURES BOARD · 1 TAP</div><div class="hook">Interactive build of Kalshi's “Who's Your Football Champion?” static — tap a city (helmet + live odds + $100→payout) to back it for the title → “Trade $25, get $25” offer CTA. City names only, exact disclaimer from the static.</div><div class="thesis"><b>Tests:</b> futures board as a tappable pick'em — does the payout ladder + $25 offer drive sign-ups during the title race?</div><div class="file">Kalshi_Football_Champion_1T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf1" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script src=&quot;mraid.js&quot;&gt;&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Who Takes the Opener?&lt;/title&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf0');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Who's Your Champion?<span class="live">LIVE</span></div><div class="fmt hot">FOOTBALL · FUTURES BOARD · 1 TAP</div><div class="hook">Interactive build of Kalshi's “Who's Your Football Champion?” static — tap a city (helmet + live odds + $100→payout) to back it for the title → “Trade $25, get $25” offer CTA. City names only, exact disclaimer from the static.</div><div class="thesis"><b>Tests:</b> futures board as a tappable pick'em — does the payout ladder + $25 offer drive sign-ups during the title race?</div><div class="file">Kalshi_Football_Champion_1T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf1" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script src=&quot;mraid.js&quot;&gt;&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Who&#x27;s Your Football MVP?&lt;/title&gt;
+&lt;style&gt;
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
+  html,body{ width:100%; height:100%; overflow:hidden; background:#000;
+    font-family:Inter,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif; color:#fff; -webkit-user-select:none; user-select:none; }
+  #stage{ position:absolute; top:0; left:0; right:0; bottom:0;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    background:radial-gradient(circle at 50% 118%, rgba(0,221,148,0.18), rgba(0,0,0,0) 55%),#000; touch-action:manipulation; overflow:hidden; }
+  #panel{ position:relative; width:100%; max-width:460px; margin:0 auto; padding:5% 6% 4%;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; text-align:center; }
+  #logo{ width:96px; height:auto; margin:0 0 16px; display:block; } #logo path{ fill:#00DD94; }
+  h1{ font-size:25px; line-height:1.2; font-weight:800; margin:0 0 14px; color:#fff; }
+  .offer{ display:inline-block; border:1px solid rgba(0,221,148,0.6); color:#00DD94; font-weight:800; font-size:15px;
+    border-radius:999px; padding:8px 20px; margin:0 0 20px; letter-spacing:.01em;
+    -webkit-animation:offerglow 2s ease-in-out infinite; animation:offerglow 2s ease-in-out infinite; }
+  @-webkit-keyframes offerglow{ 0%,100%{ box-shadow:0 0 0 0 rgba(0,221,148,0);} 50%{ box-shadow:0 0 14px 0 rgba(0,221,148,0.4);} }
+  @keyframes offerglow{ 0%,100%{ box-shadow:0 0 0 0 rgba(0,221,148,0);} 50%{ box-shadow:0 0 14px 0 rgba(0,221,148,0.4);} }
+
+  .rows{ width:100%; max-width:400px; display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; }
+  .row{ width:100%; cursor:pointer; border-top:1px solid rgba(255,255,255,0.10); padding:11px 4px; gap:8px;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center;
+    -webkit-transition:background .15s, -webkit-transform .1s; transition:background .15s, transform .1s; border-radius:10px; }
+  .row:last-child{ border-bottom:1px solid rgba(255,255,255,0.10); }
+  .row:active{ -webkit-transform:scale(.99); transform:scale(.99); }
+  .row .num{ -webkit-flex-shrink:0; flex-shrink:0; width:30px; height:30px; border-radius:8px; color:#fff; font-weight:800; font-size:13px;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center; }
+  .row .who{ -webkit-box-flex:1; -webkit-flex:1; flex:1; min-width:0; text-align:left; font-size:15px; font-weight:700; color:#fff; white-space:nowrap; }
+  .row .odds{ font-size:17px; font-weight:800; -webkit-flex-shrink:0; flex-shrink:0; width:44px; text-align:center; font-variant-numeric:tabular-nums; }
+  .row .pay{ -webkit-flex-shrink:0; flex-shrink:0; border:1px solid rgba(255,255,255,0.22); border-radius:999px; padding:6px 10px; font-size:12px; font-weight:700; color:#cfcfcf; white-space:nowrap; }
+  .row .pay b{ font-weight:800; }
+  .row.sel{ background:rgba(0,221,148,0.10); }
+  .row.dim{ opacity:.42; }
+  .row.pulse{ -webkit-animation:rowpulse 1.6s ease-in-out infinite; animation:rowpulse 1.6s ease-in-out infinite; }
+  @-webkit-keyframes rowpulse{ 0%,100%{ background:rgba(255,255,255,0);} 50%{ background:rgba(255,255,255,0.05);} }
+  @keyframes rowpulse{ 0%,100%{ background:rgba(255,255,255,0);} 50%{ background:rgba(255,255,255,0.05);} }
+
+  #hint{ font-size:12.5px; font-weight:700; color:#4DE4B2; margin:16px 0 0; height:18px; -webkit-transition:opacity .2s; transition:opacity .2s; }
+  #conf{ font-size:14px; font-weight:800; color:#fff; margin:14px 0 0; height:20px; opacity:0; -webkit-transition:opacity .25s; transition:opacity .25s; }
+  #conf.show{ opacity:1; }
+
+  #etag{ font-size:18px; font-weight:800; letter-spacing:.01em; text-transform:uppercase; color:#fff; margin:12px 0 0;
+    opacity:0; max-height:0; overflow:hidden; -webkit-transition:opacity .35s ease; transition:opacity .35s ease; }
+  #etag.show{ opacity:1; max-height:36px; }
+  #cta{ -webkit-animation:ctabounce 1.5s ease-in-out infinite; animation:ctabounce 1.5s ease-in-out infinite;
+    display:block; width:100%; max-width:360px; margin:10px auto 0; padding:15px 30px; border:0; border-radius:999px; font-family:inherit;
+    font-weight:800; font-size:18px; color:#00201A; background:#00DD94; box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer;
+    opacity:0; max-height:0; overflow:hidden; -webkit-transition:opacity .35s ease; transition:opacity .35s ease; }
+  #cta.show{ opacity:1; max-height:70px; }
+  #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
+  @-webkit-keyframes ctabounce{0%,100%{-webkit-transform:translateY(0);}50%{-webkit-transform:translateY(-6px);}}
+  @keyframes ctabounce{0%,100%{transform:translateY(0);box-shadow:0 8px 22px rgba(0,221,148,.45);}50%{transform:translateY(-6px);box-shadow:0 16px 34px rgba(0,221,148,.75);}}
+
+  .disc{ position:absolute; left:0; right:0; bottom:12px; margin:0 auto; padding:0 22px; font-size:8px; line-height:1.45; color:#666; text-align:center; max-width:460px; }
+
+  @media (orientation:landscape){
+    #panel{ max-width:680px; padding:2.5% 6%; } #logo{ width:70px; margin-bottom:8px; } h1{ font-size:21px; margin-bottom:8px; } .offer{ margin-bottom:12px; }
+    .rows{ max-width:560px; } .row{ padding:8px 4px; } #hint{ margin-top:8px; } .disc{ display:none; }
+  }
+  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; -webkit-animation:none!important; animation:none!important; } }
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
+  &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
+  &lt;h1&gt;Who&amp;rsquo;s Your Football MVP?&lt;/h1&gt;
+  &lt;div class=&quot;offer&quot;&gt;Trade $25, get $25&lt;/div&gt;
+  &lt;div class=&quot;rows&quot; id=&quot;rows&quot;&gt;
+    &lt;button class=&quot;row&quot; data-who=&quot;J Burrow&quot;&gt;&lt;span class=&quot;num&quot; style=&quot;background:#FB6A2E&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;who&quot;&gt;J Burrow&lt;/span&gt;&lt;span class=&quot;odds&quot; style=&quot;color:#FB6A2E&quot;&gt;12%&lt;/span&gt;&lt;span class=&quot;pay&quot; style=&quot;border-color:rgba(251,106,46,.5)&quot;&gt;$100 &amp;rarr; &lt;b style=&quot;color:#FB6A2E&quot;&gt;$784&lt;/b&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;row&quot; data-who=&quot;J Allen&quot;&gt;&lt;span class=&quot;num&quot; style=&quot;background:#5B8DEF&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;who&quot;&gt;J Allen&lt;/span&gt;&lt;span class=&quot;odds&quot; style=&quot;color:#5B8DEF&quot;&gt;10%&lt;/span&gt;&lt;span class=&quot;pay&quot; style=&quot;border-color:rgba(91,141,239,.5)&quot;&gt;$100 &amp;rarr; &lt;b style=&quot;color:#5B8DEF&quot;&gt;$855&lt;/b&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;row&quot; data-who=&quot;L Jackson&quot;&gt;&lt;span class=&quot;num&quot; style=&quot;background:#A98BFF&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;who&quot;&gt;L Jackson&lt;/span&gt;&lt;span class=&quot;odds&quot; style=&quot;color:#A98BFF&quot;&gt;10%&lt;/span&gt;&lt;span class=&quot;pay&quot; style=&quot;border-color:rgba(169,139,255,.5)&quot;&gt;$100 &amp;rarr; &lt;b style=&quot;color:#A98BFF&quot;&gt;$940&lt;/b&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;row&quot; data-who=&quot;J Herbert&quot;&gt;&lt;span class=&quot;num&quot; style=&quot;background:#4FD1C5&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;who&quot;&gt;J Herbert&lt;/span&gt;&lt;span class=&quot;odds&quot; style=&quot;color:#4FD1C5&quot;&gt;9%&lt;/span&gt;&lt;span class=&quot;pay&quot; style=&quot;border-color:rgba(79,209,197,.5)&quot;&gt;$100 &amp;rarr; &lt;b style=&quot;color:#4FD1C5&quot;&gt;$1,044&lt;/b&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;row&quot; data-who=&quot;C Williams&quot;&gt;&lt;span class=&quot;num&quot; style=&quot;background:#6C8CFF&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;who&quot;&gt;C Williams&lt;/span&gt;&lt;span class=&quot;odds&quot; style=&quot;color:#6C8CFF&quot;&gt;7%&lt;/span&gt;&lt;span class=&quot;pay&quot; style=&quot;border-color:rgba(108,140,255,.5)&quot;&gt;$100 &amp;rarr; &lt;b style=&quot;color:#6C8CFF&quot;&gt;$1,341&lt;/b&gt;&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;hint&quot;&gt;&amp;#128070; Pick your MVP to trade&lt;/div&gt;
+  &lt;div id=&quot;conf&quot;&gt;&amp;nbsp;&lt;/div&gt;
+  &lt;div id=&quot;etag&quot;&gt;Trade $25, get $25&lt;/div&gt;
+  &lt;button id=&quot;cta&quot;&gt;Sign Up Today&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;disc&quot;&gt;18+ only. Restrictions and eligibility requirements apply. Trading event contracts and trading leveraged products, including perpetual futures, involves significant risk and is not appropriate for everyone. Please carefully consider if it is appropriate for you in light of your personal financial circumstances. Kalshi products are not available in all jurisdictions. See kalshi.com/regulatory for more information. Market information may not reflect current prices or available trading opportunities. Prices are subject to change.&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+/* ============================================================
+ * Kalshi — &quot;Who&#x27;s Your Football MVP?&quot; playable.
+ * Interactive build of Kalshi&#x27;s MVP futures static: tap a player
+ * to back them for MVP -&gt; confirm + offer CTA. Player names +
+ * jersey numbers (client-approved). MRAID 3.0, ES5. Verb: &quot;trade&quot;.
+ * ============================================================ */
+(function(){
+  &quot;use strict&quot;;
+  var STORE={ ios:&quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
+    android:&quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot; };
+  function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
+  var rows=document.querySelectorAll(&quot;#rows .row&quot;), hint=document.getElementById(&quot;hint&quot;),
+      conf=document.getElementById(&quot;conf&quot;), etag=document.getElementById(&quot;etag&quot;), cta=document.getElementById(&quot;cta&quot;);
+  var started=false, picked=false;
+
+  function pick(btn){
+    if(!started) return;
+    for(var i=0;i&lt;rows.length;i++){ rows[i].className=rows[i].className.replace(/\s*(sel|dim|pulse)/g,&quot;&quot;); rows[i].className+=(rows[i]===btn?&quot; sel&quot;:&quot; dim&quot;); }
+    conf.innerHTML=&quot;You&amp;rsquo;re backing &lt;b&gt;&quot;+btn.getAttribute(&quot;data-who&quot;)+&quot;&lt;/b&gt; for MVP.&quot;; conf.className=&quot;show&quot;;
+    picked=true; hint.style.opacity=&quot;0&quot;; etag.className=&quot;show&quot;; cta.className=&quot;show&quot;;
+  }
+  for(var i=0;i&lt;rows.length;i++){ (function(b){ b.onclick=function(){ pick(b); }; })(rows[i]); }
+  cta.addEventListener(&quot;click&quot;,function(){ var url=STORE[platform()];
+    if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
+
+  function startAttract(){ if(picked) return; for(var i=0;i&lt;rows.length;i++){ rows[i].className=&quot;row pulse&quot;; } hint.style.opacity=&quot;1&quot;; }
+  function stopAttract(){ if(!picked){ for(var i=0;i&lt;rows.length;i++){ rows[i].className=&quot;row&quot;; } } }
+  function showAd(){ if(started) return; started=true; startAttract(); }
+  function onViewableChange(v){ if(v){ started?startAttract():showAd(); } else stopAttract(); }
+  function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
+  function boot(){ if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
+    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else onSdkReady(); }
+  document.addEventListener(&quot;visibilitychange&quot;,function(){ if(document.hidden) stopAttract(); else if(started&amp;&amp;!picked) startAttract(); },false);
+  boot();
+})();
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf1');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Who's Your MVP?<span class="live">LIVE</span></div><div class="fmt hot">FOOTBALL · MVP BOARD · 1 TAP</div><div class="hook">Interactive build of Kalshi's “Who's Your Football MVP?” static — tap a player (jersey # + live odds + $100→payout) to back them for MVP → “Trade $25, get $25” offer CTA. Player names + numbers, exact disclaimer from the static.</div><div class="thesis"><b>Tests:</b> player-futures board as a tappable pick'em — companion to the Champion board; does the MVP race + $25 offer convert?</div><div class="file">Kalshi_Football_MVP_1T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf2" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script src=&quot;mraid.js&quot;&gt;&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Who Takes the Opener?&lt;/title&gt;
 &lt;style&gt;
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
   html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
@@ -303,7 +419,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf1');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Who Takes the Opener?<span class="live">LIVE</span></div><div class="fmt hot">FOOTBALL · HEAD-TO-HEAD · 1 TAP</div><div class="hook">SEA vs. KC season opener — tap your team (switch freely to compare) → an instant payout slip ($25 → $58.14) that “pays the moment the game ends.” Matchup + payout-slip concepts, with the fast-payout / not-a-sportsbook wedge from the DK video.</div><div class="thesis"><b>Tests:</b> sports pick’em + instant-payout hook — does letting fans make the call before install lift qualified, deposit-ready users during the football tentpole?</div><div class="file">Kalshi_Football_Matchup_2T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf2" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script src=&quot;mraid.js&quot;&gt;&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Call the World Series&lt;/title&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf2');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Who Takes the Opener?<span class="live">LIVE</span></div><div class="fmt hot">FOOTBALL · HEAD-TO-HEAD · 1 TAP</div><div class="hook">SEA vs. KC season opener — tap your team (switch freely to compare) → an instant payout slip ($25 → $58.14) that “pays the moment the game ends.” Matchup + payout-slip concepts, with the fast-payout / not-a-sportsbook wedge from the DK video.</div><div class="thesis"><b>Tests:</b> sports pick’em + instant-payout hook — does letting fans make the call before install lift qualified, deposit-ready users during the football tentpole?</div><div class="file">Kalshi_Football_Matchup_2T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf3" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script src=&quot;mraid.js&quot;&gt;&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Call the World Series&lt;/title&gt;
 &lt;style&gt;
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
   html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
@@ -425,7 +541,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf2');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Call the World Series<span class="live">LIVE</span></div><div class="fmt hot">MLB · PICK A CONTENDER · 1 TAP</div><div class="hook">Tap any contender on the live-odds board (switch to compare payouts) → a payout slip that “pays the moment the Series is decided.” Fresh MLB tentpole build.</div><div class="thesis"><b>Tests:</b> futures-market pick — does a season-long ‘who wins it all’ call convert during the MLB playoff window?</div><div class="file">Kalshi_MLB_WorldSeries_1T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf3" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script src=&quot;mraid.js&quot;&gt;&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Agree With the Market?&lt;/title&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Call the World Series<span class="live">LIVE</span></div><div class="fmt hot">MLB · PICK A CONTENDER · 1 TAP</div><div class="hook">Tap any contender on the live-odds board (switch to compare payouts) → a payout slip that “pays the moment the Series is decided.” Fresh MLB tentpole build.</div><div class="thesis"><b>Tests:</b> futures-market pick — does a season-long ‘who wins it all’ call convert during the MLB playoff window?</div><div class="file">Kalshi_MLB_WorldSeries_1T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script src=&quot;mraid.js&quot;&gt;&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Agree With the Market?&lt;/title&gt;
 &lt;style&gt;
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
   html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
@@ -547,7 +663,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Agree With the Market?<span class="live">LIVE</span></div><div class="fmt">FOOTBALL · DRAG SLIDER</div><div class="hook">“Seattle to win the opener — the market says 43%. What’s your number?” Drag against the market marker → YES/NO cents + $25 payout update live. From the ‘Seattle at 8% — agree?’ concept.</div><div class="thesis"><b>Tests:</b> conviction hook — does challenging the user against the market’s number drive engagement vs. a straight pick?</div><div class="file">Kalshi_Football_AgreeSlider_Drag.html</div></div></div></div>
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf4');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Agree With the Market?<span class="live">LIVE</span></div><div class="fmt">FOOTBALL · DRAG SLIDER</div><div class="hook">“Seattle to win the opener — the market says 43%. What’s your number?” Drag against the market marker → YES/NO cents + $25 payout update live. From the ‘Seattle at 8% — agree?’ concept.</div><div class="thesis"><b>Tests:</b> conviction hook — does challenging the user against the market’s number drive engagement vs. a straight pick?</div><div class="file">Kalshi_Football_AgreeSlider_Drag.html</div></div></div></div>
 <h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A — Sport</td><td>Football Matchup vs. MLB World Series</td><td>Which league’s pick’em converts harder during its tentpole window?</td><td>IPM → FTD rate</td></tr><tr><td>B — Mechanic</td><td>Football Matchup vs. Agree Slider</td><td>Straight pick vs. ‘beat the market’ conviction — which hook wins?</td><td>CTR → CVR</td></tr></table>
 <div class="note"><b>About these builds:</b> working concept builds — final versions ship with the real Week-1 matchup, current odds, and any official team assets. All three are genuinely interactive (tap/drag, re-selectable), Unity-spec compliant (MRAID 3.0 · single file · &lt;5&nbsp;MB · both orientations), carry Kalshi’s official disclaimer verbatim, and hold the compliance line — the verb is always “trade,” never “bet.” Ready for campaign QA once concepts are approved.</div>
 <footer>Kalshi brand tokens: kalshi.com/brandkit. Store: apps.apple.com/us/app/kalshi/id1632713844 · play.google.com/store/apps/details?id=com.kalshi.mobile</footer>
